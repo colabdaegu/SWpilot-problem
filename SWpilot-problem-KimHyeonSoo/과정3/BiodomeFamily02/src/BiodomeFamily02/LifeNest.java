@@ -1,0 +1,56 @@
+package BiodomeFamily02;
+
+import java.util.ArrayList;
+
+public class LifeNest {
+    private ArrayList<Organism> organismList = new ArrayList<>();
+
+    public void addOrganism(Organism organism) {
+        organismList.add(organism);
+        System.out.println("[LifeNest] " + organism.getName() + "이 추가되었습니다.");
+    }
+
+    public void removeOrganism(String name) {
+        for (int i = 0; i < organismList.size(); i++) {
+            if (organismList.get(i).getName().equals(name)) {
+                System.out.println("[LifeNest] " + name + "이 삭제되었습니다.");
+                organismList.remove(i);
+                return;
+            }
+        }
+        System.out.println("[LifeNest] " + name + "을 찾을 수 없습니다.");
+    }
+
+    public void displayAll() {
+        System.out.println("\n전체 동식물 목록 출력:");
+        for (int i = 0; i < organismList.size(); i++) {
+            System.out.print(" " + (i + 1) + ". ");
+            organismList.get(i).displayInfo();
+        	//System.out.println(" " + (i + 1) + ". " + organismList.get(i).toString());
+        }
+        System.out.println();
+    }
+
+    public Organism findOrganism(String name) {
+        for (Organism o : organismList) {
+            if (o.getName().equals(name)) {
+                return o;
+            }
+        }
+        return null;
+    }
+    
+    public void getter(String name) {
+    	Organism target = this.findOrganism(name);
+    	System.out.println();
+    	System.out.print("[LifeNest - getter] " + name + "의 정보: ");
+    	target.displayInfo();
+    }
+    
+    public void setter(String name, String new_habitat) {
+    	Organism target = this.findOrganism(name);
+    	target.setHabitat(new_habitat);
+        System.out.println();
+        System.out.println("[LifeNest - setter] " + name + " 서식지가 변경되었습니다.");
+    }
+}
