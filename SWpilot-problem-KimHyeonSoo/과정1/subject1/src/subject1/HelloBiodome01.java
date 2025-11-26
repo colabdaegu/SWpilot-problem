@@ -5,7 +5,7 @@ public class HelloBiodome01 {
 	public static void main(String[] args) {
 		if (args.length < 1)
 		{
-			System.out.println("재입력");
+			System.out.println("재입력 요청");
 			System.exit(1);
 		}
 		
